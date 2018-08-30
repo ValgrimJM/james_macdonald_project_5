@@ -1,0 +1,20 @@
+.playerScreen{
+    flex: 0 0 30%;
+    height: 100vh;
+    .wrapper{
+        width: 85%;
+        height: 93vh;
+    }
+}
+.playerImg{
+    height: 200px;
+    width: 200px;
+    margin: 20px;
+}
+.playerInfo, .infoLabel{
+    flex: 1 0 100%;
+    margin: 5px;
+}
+.playerStats{
+    margin-top: 20px;
+}
