@@ -138,17 +138,42 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     width: 85%;
     height: 93vh; }
 
-.playerImg {
+.playerImg, .enemyImg {
   height: 200px;
-  width: 200px;
-  margin: 20px; }
+  width: 200px; }
 
 .playerInfo, .infoLabel {
   flex: 1 0 100%;
   margin: 5px; }
 
 .playerStats {
-  margin-top: 20px; }
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row; }
+  .playerStats .unchangingStat {
+    flex: 1 0 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 30px; }
+
+.dynamicStats {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-top: 30px;
+  width: 100%; }
+
+.adjustableStat {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly; }
+  .adjustableStat h3 {
+    text-transform: uppercase; }
+  .adjustableStat button {
+    height: 30px; }
 
 .gameScreen {
   height: 68vh; }
