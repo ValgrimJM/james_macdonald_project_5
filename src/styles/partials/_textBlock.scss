@@ -1,31 +1,22 @@
-@mixin other( $width, $color, $bgcolor ) {
-  box-shadow:
-    4*$width 0 $bgcolor, 
-    -4*$width 0 $bgcolor, 
-    0 (-4*$width) $bgcolor, 
-    0 4*$width $bgcolor,
-    $width 0 0 2*$width $bgcolor,
-    -$width 0 0 2*$width $bgcolor,
-    0 (-$width) 0 2*$width $bgcolor,
-    0 $width 0 2*$width $bgcolor,
-    5*$width 0 $color, 
-    -5*$width 0 $color,
-    0 (-5*$width) $color, 
-    0 5*$width $color,
-    0 0 0 3*$width $color,
-    0 2*$width 0 2*$width $color,
-    0 (-2*$width) 0 2*$width $color,
-    2*$width 0 0 2*$width $color,
-    (-2*$width) 0 0 2*$width $color;
-    margin: 5*$width auto;
-}
+
 .borderBlock{
-    @include other(4px, black, white);
+    @include pixelBorder(4px, $black, $white);
+}
+.dark .borderBlock{
+    @include pixelBorder(4px, $white, $black)
 }
 .textBlock{
     width: 92%;
     margin: 0 auto;
     .wrapper{
         height: 25vh;
+    }
+}
+.blockText{
+    display: flex;
+    flex-wrap: wrap;
+    p{
+        margin: 7px 0;
+        flex: 1 0 100%;
     }
 }

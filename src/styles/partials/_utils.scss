@@ -1,0 +1,105 @@
+$white: #FFFFFF;
+$grey: #444444;
+$black: #000000;
+
+@mixin pixelBorder( $width, $color, $bgcolor ) {
+  box-shadow:
+    4*$width 0 $bgcolor, 
+    -4*$width 0 $bgcolor, 
+    0 (-4*$width) $bgcolor, 
+    0 4*$width $bgcolor,
+    $width 0 0 2*$width $bgcolor,
+    -$width 0 0 2*$width $bgcolor,
+    0 (-$width) 0 2*$width $bgcolor,
+    0 $width 0 2*$width $bgcolor,
+    5*$width 0 $color, 
+    -5*$width 0 $color,
+    0 (-5*$width) $color, 
+    0 5*$width $color,
+    0 0 0 3*$width $color,
+    0 2*$width 0 2*$width $color,
+    0 (-2*$width) 0 2*$width $color,
+    2*$width 0 0 2*$width $color,
+    (-2*$width) 0 0 2*$width $color;
+    margin: 5*$width auto;
+}
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.App{
+    background-color: $white;
+    color: $black;
+}
+.App.dark{
+    background-color: $black;
+    color: $white;
+}
+button:not(.swal-button){
+    background: $white;
+    color: $black;
+    border: none;
+    @include pixelBorder(4px, $black, $white);
+    &:enabled:hover{
+        @include pixelBorder(4px, $white, $black);
+        background-color: $black;
+        color: $white;
+    }
+    .dark &{
+        color: $white;
+        background-color: transparent;
+        @include pixelBorder(4px, $white, $black);
+        &:enabled:hover{
+            background-color: $white;
+            color: black;
+            @include pixelBorder(4px, $black, $white);
+        }
+    }
+}
+button[disabled]{
+        color: $grey;
+    }
+img{
+    border: 4px solid $black;
+    .dark &{
+        border: 4px solid $white;
+    }
+}
+.swal-overlay {
+    background-color: rgba(255, 255, 255, 0.45);
+}
+.swal-modal{
+    background-color: $white;
+    color: $black;
+    border: 4px solid $black;
+    .dark &{
+        background-color: $black;
+        color: $white;
+        border: 4px solid $white;
+    }
+}
+.swal-button{
+    border-radius: 0;
+    background-color: $black;
+    color: $white;
+    border: 1px solid $white;
+    &:hover{
+        background-color: $white;
+        color: $black;
+        transition: 0.3s;
+        border: 1px solid $black;
+    }
+}
+.swal-content__input, .swal-content__input:focus{
+    border: 4px solid $black;
+}

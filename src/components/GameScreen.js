@@ -1,18 +1,45 @@
 import React, { Component } from "react";
-import enemyImg from "../assets/minotaur.svg";
+
+import swal from 'sweetalert';
+
+//import images
+import minotaur from "../assets/enemy/minotaur.svg";
+import badGnome from "../assets/enemy/bad-gnome.svg";
+import brainTentacle from "../assets/enemy/brain-tentacle.svg";
+import brute from "../assets/enemy/brute.svg";
+import carnivorousPlant from "../assets/enemy/carnivorous-plant.svg";
+import dragonHead from "../assets/enemy/dragon-head.svg";
+import medusaHead from "../assets/enemy/medusa-head.svg";
+import seaCreature from "../assets/enemy/sea-creature.svg";
+import troll from "../assets/enemy/troll.svg";
+import ninjaVelociraptor from "../assets/enemy/ninja-velociraptor.svg";
+
+const imgArray = [minotaur, badGnome, brainTentacle, brute, carnivorousPlant, dragonHead, medusaHead, seaCreature, troll, ninjaVelociraptor];
 
 
 class GameScreen extends Component{
 
     checkCharName = (charName) => this.props.checkCharName(charName);
-    componentDidMount(){
-
+    checkCharaCode = (charCode) => this.props.loadChar(charCode);
+    newChara = () => {
+        swal("Please enter your character's name:", {
+            content: "input",
+        }).then((charName) => {
+            if (charName !== null) {
+                this.checkCharName(charName.trim());
+            }
+        });
     }
-    newChara = () =>{
-        console.log('testy');
-        let charName = prompt("Please enter your character's name");
-        this.checkCharName(charName);
-        
+    loadChara = () => {
+        swal("Please enter your character's code:", {
+            content: "input",
+        }).then((charCode) => {
+            console.log(charCode);
+            
+            if (charCode !== null) {
+                this.checkCharaCode(charCode.trim());
+            }
+        });
     }
     render(){
         let charDisplay = null;
@@ -23,7 +50,7 @@ class GameScreen extends Component{
                 <div className="chooseCharacter">
                     <h2>Create A New Character or Load An Existing One</h2>
                     <button onClick={this.newChara}>Create New Character</button>
-                    <button>Load Existing Character</button>
+                    <button onClick={this.loadChara}>Load Existing Character</button>
                 </div>
         }
         else if (this.props.canBattle === false && this.props.enemy.isFighting === false && this.props.canLvl === true){
@@ -40,17 +67,23 @@ class GameScreen extends Component{
         }
 
         if(this.props.enemy.isFighting === true && this.props.canBattle === false){
+
             enemyDisplay =
                 <div className="enemyScreen">
-                    <img className="enemyImg" src={enemyImg} alt=""/>
-                    <h2>Enemy Name</h2>
+                <img className="enemyImg" id="enemyImg" src={imgArray[this.props.enemy.img]} alt=""/>
+                    <h2 className="enemyName">{this.props.enemy.name}</h2>
                     <progress value={this.props.enemy.hp} max={this.props.enemy.maxHp}></progress>
                 </div>
         }
 
         return(
-            <div className="gameScreen">
-                {this.props.enemy.isFighting === true ? enemyDisplay :  charDisplay } 
+            <div className="gameScreen" id="gameScreen">
+                <div className="popOut">
+                    <button className="popOutButton" onClick={() => this.props.collapseStats()}><i className="fas fa-arrows-alt-h"></i></button>
+                </div>
+                <div className="effectScreen">
+                    {this.props.enemy.isFighting === true ? enemyDisplay :  charDisplay } 
+                </div>
             </div>
         )
     }

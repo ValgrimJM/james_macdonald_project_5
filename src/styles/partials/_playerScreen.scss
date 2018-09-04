@@ -1,3 +1,13 @@
+
+
+.darkMode{
+    right: 30px;
+    bottom: 20px;
+}
+.info{
+    right: 80px;
+    bottom: 20px;
+}
 .playerScreen{
     flex: 0 0 30%;
     height: 100vh;
@@ -5,6 +15,26 @@
         width: 85%;
         height: 93vh;
     }
+    .popOut{
+        right: 60px;
+        left: auto;
+    }
+    .info, .darkMode{
+    position: absolute;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    @include pixelBorder(1px, $black, $white);
+    &:enabled:hover{
+        @include pixelBorder(1px, $white, $black);
+    }
+    .dark &{
+        @include pixelBorder(1px, $white, $black);
+        &:enabled:hover{
+            @include pixelBorder(1px, $black, $white);
+        }
+    }
+}
 }
 .playerImg, .enemyImg{
     height: 200px;
@@ -23,10 +53,11 @@
         flex: 1 0 100%;
         display: flex;
         align-items: center;
-        justify-content: space-evenly;
+        justify-content: space-between;
         height: 30px;
     }
 }
+
 .dynamicStats{
     display: flex;
     flex-wrap: wrap;
@@ -34,15 +65,43 @@
     margin-top: 30px;
     width: 100%;
 }
+.largeButtons button{
+    width: 90%;
+    background-color: transparent;
+    @include pixelBorder(4px, $black, $white);
+    &:enabled:hover{
+        @include pixelBorder(4px, $white, $black);
+        background-color: $black;
+        color: $white;
+    }
+    .dark &{
+        background-color: transparent;
+        @include pixelBorder(4px, $white, $black);
+        &:enabled:hover{
+            background-color: $white;
+            color: black;
+            @include pixelBorder(4px, $black, $white);
+        }
+    }
+}
 .adjustableStat{
     height: 30px;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     h3{
         text-transform: uppercase;
     }
     button{
-        height: 30px;
+        @include pixelBorder(1px, $black, $white);
+        &:enabled:hover{
+            @include pixelBorder(1px, $white, $black);
+        }
+        .dark &{
+            @include pixelBorder(1px, $white, $black);
+            &:enabled:hover{
+                @include pixelBorder(1px, $black, $white);
+            }
+        }
     }
 }

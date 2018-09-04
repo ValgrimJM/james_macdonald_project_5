@@ -1,11 +1,59 @@
+.chooseCharacter, .chosenChar{
+    margin-top: 25%;
+    display: flex;
+    flex-wrap: wrap;
+    h2{
+        flex: 1 0 100%;
+    }
+}
 .gameScreen{
     height: 68vh;
+    .enemyScreen{
+        margin-top: 10%;
+    }
+    .effectScreen{
+        position: absolute;
+        height: 68%;
+        width: 70%;
+        z-index: 1;
+    }
 }
+
 .gameSection{
     flex: 1 0 70%;
     display: flex;
     flex-direction: column
 }
+.enemyName{
+    text-transform: capitalize;
+}
 progress{
-    
+    border-radius: 10px;
+    width: 350px;
+}
+progress::-moz-progress-bar{
+    border: 0;
+    border-radius: 10px;
+    background-color: green;
+}
+.popOut{
+    display: none;
+    position: absolute;
+    top: 33px;
+    left: 5px;
+    z-index: 2;
+}
+.popOut button{
+    padding: 10px;
+    font-size: 20px;
+    @include pixelBorder(1px, $black, $white);
+    &:enabled:hover{
+        @include pixelBorder(1px, $white, $black);
+    }
+    .dark &{
+        @include pixelBorder(1px, $white, $black);
+        &:enabled:hover{
+            @include pixelBorder(1px, $black, $white);
+        }
+    }
 }

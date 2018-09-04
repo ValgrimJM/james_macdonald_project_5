@@ -10,9 +10,9 @@ class Adjustable extends Component{
         return(
             <div className="adjustableStat">
                 <h3>{statName}:</h3>
-                {this.props.player.playerRef[statName] > this.props[statName] ? <button onClick={() => this.props.statDown(this.props)}>Decrease</button> : <button disabled="true">Decrease</button> }
+                {this.props.player.playerRef[statName] > this.props[statName] ? <button onClick={() => this.props.statDown(this.props)}><i class="fas fa-caret-down"></i></button> : <button disabled="true"><i class="fas fa-caret-down"></i></button> }
                 <p>{this.props.player.playerRef[statName]}</p>
-                {this.props.availPoints > 0 ? <button onClick={() => this.props.statUp(this.props)}>Increase</button> : <button disabled="true">Increase</button>}
+                {this.props.availPoints > 0 ? <button onClick={() => this.props.statUp(this.props)}><i class="fas fa-caret-up"></i></button> : <button disabled="true"><i class="fas fa-caret-up"></i></button>}
             </div>
         );
     }
