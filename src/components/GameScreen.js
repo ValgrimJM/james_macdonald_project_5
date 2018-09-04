@@ -25,7 +25,7 @@ class GameScreen extends Component{
         swal("Please enter your character's name:", {
             content: "input",
         }).then((charName) => {
-            if (charName !== null) {
+            if (charName !== null && charName !=="") {
                 this.checkCharName(charName.trim());
             }
         });

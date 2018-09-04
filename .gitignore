@@ -15,7 +15,6 @@
 .env.development.local
 .env.test.local
 .env.production.local
-app.js
 battle layout.png
 dungeonTest.html
 Form.js
