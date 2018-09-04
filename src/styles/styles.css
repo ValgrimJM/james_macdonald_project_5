@@ -333,7 +333,8 @@ html {
   align-items: center;
   justify-content: space-between; }
   .adjustableStat h3 {
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    flex: 0 0 33%; }
   .adjustableStat button {
     box-shadow: 4px 0 #FFFFFF, -4px 0 #FFFFFF, 0 -4px #FFFFFF, 0 4px #FFFFFF, 1px 0 0 2px #FFFFFF, -1px 0 0 2px #FFFFFF, 0 -1px 0 2px #FFFFFF, 0 1px 0 2px #FFFFFF, 5px 0 #000000, -5px 0 #000000, 0 -5px #000000, 0 5px #000000, 0 0 0 3px #000000, 0 2px 0 2px #000000, 0 -2px 0 2px #000000, 2px 0 0 2px #000000, -2px 0 0 2px #000000;
     margin: 5px auto; }

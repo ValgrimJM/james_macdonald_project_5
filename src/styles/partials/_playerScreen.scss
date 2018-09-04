@@ -91,6 +91,7 @@
     justify-content: space-between;
     h3{
         text-transform: uppercase;
+        flex: 0 0 33%;
     }
     button{
         @include pixelBorder(1px, $black, $white);
